@@ -60,12 +60,17 @@ class DynamicProgramming
   end
 
   def frog_hops_top_down(n)
-    return @frog_cache[n] unless @frog_cache[n].nil?
-    
+    frog_hops_top_down_helper(n)
+
   end
 
   def frog_hops_top_down_helper(n)
-
+    return @frog_cache[n] unless @frog_cache[n].nil?
+    one_step = frog_hops_top_down_helper(n-1).map {|arr| arr.dup << 1}
+    two_step = frog_hops_top_down_helper(n-2).map {|arr| arr.dup << 2}
+    three_step = frog_hops_top_down_helper(n-3).map {|arr| arr.dup << 3}
+    @frog_cache[n] = one_step + two_step + three_step
+    @frog_cache[n]
   end
 
   def super_frog_hops(n, k)
