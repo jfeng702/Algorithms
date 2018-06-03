@@ -23,16 +23,16 @@ describe BinarySearchTree do
   #        /                  #
   #      (1.5)                #
   #############################
+  let(:new_bst) do
+      bst = BinarySearchTree.new
+      [15, 16, 20, 4, 1, 10, 9, 14, 12, 11, 13].each do |el|
+        bst.insert(el)
+      end
+  end
 
   describe '#initialize' do
     it 'sets @root to nil' do
       expect(bst.root).to eq(nil)
-    end
-  end
-
-  describe '#parent' do
-    it 'finds the parent' do
-      expect(prefilled_bst.parent(3).value).to eq(5)
     end
   end
 
